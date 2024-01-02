@@ -33,18 +33,30 @@ from icecream import ic
 # df.to_csv('new.csv', index=None) #copy of df
 # df.to_csv('new.csv', columns=['tickers', 'price'], index=None)
 
-def convert_people_cell(cell):
-    if cell == 'n.a.': return "sam altman"
-    return cell
+# def convert_people_cell(cell):
+#     if cell == 'n.a.': return "sam altman"
+#     return cell
+# def convert_eps_cell(cell):
+#     if cell == 'not available': return None
+#     return cell
+# df = pd.read_excel('04 Read or write excell and csv files/stock_data.xlsx', converters={
+#     'people': convert_people_cell,
+#     'eps': convert_eps_cell
+# })
+# df.to_excel('new.xlsx', index=None, startrow=1, startcol=2)
 
-def convert_eps_cell(cell):
-    if cell == 'not available': return None
-    return cell
-
-df = pd.read_excel('04 Read or write excell and csv files/stock_data.xlsx', converters={
-    'people': convert_people_cell,
-    'eps': convert_eps_cell
+df_stocks = pd.DataFrame({
+    'tickers': ['GOOGL', 'WMT', 'MSFT'],
+    'price': [845, 65, 64 ],
+    'pe': [30.37, 14.26, 30.97],
+    'eps': [27.82, 4.61, 2.12]
+})
+df_weather =  pd.DataFrame({
+    'day': ['1/1/2017','1/2/2017','1/3/2017'],
+    'temperature': [32,35,28],
+    'event': ['Rain', 'Sunny', 'Snow']
 })
 
-ic(df)
-
+with pd.ExcelWriter('stocks_weather.xlsx') as writer:
+    df_stocks.to_excel(writer, sheet_name='stonks')
+    df_weather.to_excel(writer, sheet_name='weather')
