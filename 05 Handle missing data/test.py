@@ -11,6 +11,6 @@ df = df.reindex(idx)
 df = round((df.interpolate(method='time')), 2)
 
 average_temperature = df.temperature.mean()
-print(average_temperature)
+print(df)
 
 # df.to_csv('new_data')
