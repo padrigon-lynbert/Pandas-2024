@@ -12,6 +12,7 @@ new_df = df.replace({
 
 new_df = df.replace({
     -99999: np.NaN,
-    '0': 'no event'
+    '0': 'Sunny'
 })
-#.interpolate(method='linear')
+new_df  
+#.interpolate(method='linear') kjlnfg
