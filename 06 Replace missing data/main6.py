@@ -30,3 +30,4 @@ new_df
 #replace list values in a list of values
 
 df = pd.read_csv('06 Replace missing data/grades.csv').replace(['poor', 'average', 'good', 'exceptional'], [1,2,3,4])
+df
