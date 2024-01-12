@@ -8,6 +8,6 @@ import matplotlib.pyplot as plt
 
 df.Close.resample('M').mean().plot()
 df.Close.resample('M').mean().plot(kind='density')
-
+df.Close.plot()
 plt.show()
 
