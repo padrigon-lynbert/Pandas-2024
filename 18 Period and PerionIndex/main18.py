@@ -37,3 +37,11 @@ ps = pd.Series((df), idx)
 pst = ps.to_timestamp()
 pst = pst.to_period()
 pst
+
+df = pd.read_csv('18 Period and PerionIndex/wmt.csv')
+df.set_index('Line Item', inplace=True)
+df = df.T
+df.index = pd.PeriodIndex(df.index, freq='Q-Jan')
+
+df['start date'] = df.index.map(lambda x: x.start_time)
+df
