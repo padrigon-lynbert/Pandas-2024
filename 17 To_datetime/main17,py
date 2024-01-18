@@ -1,11 +1,19 @@
 import pandas as pd
 
-dates = ['2017-01-05', 'Jan 5, 2017', '01/05/2017', '2017.01.05', '2017/01/05','20170105']
+dates = ['2017-01-05 2:30 PM', 'Jan 5, 2017', '01/05/2017', '2017.01.05', '2017/01/05','20170105']
 # dates = ['2017-01-05','Jan 5, 2017']
-dates = pd.to_datetime(dates[0])
+dates = pd.to_datetime(dates, errors='coerce')
 dates
 
-s = pd.Series(['This asdf is datetime is 11-20-2020',
-         'This asdf is datetime is 1-25-2017'])
+s = pd.Series(['This asdf is datetime: 11202020',
+         'This asdf is datetime: 1252017'])
 
-dates = pd.to_datetime(s, format='This asdf is datetime is %m/%d/%Y')
+dates = pd.to_datetime(s, format= 'This asdf is datetime: %m%d%Y')
+
+pd.to_datetime('5/1/2017', dayfirst=True)
+
+#epoch (unix datetime)
+
+d = 12345665
+dt = pd.to_datetime([d], unit='s')
+d2 = dt.view('int64')
