@@ -1,0 +1,11 @@
+import pandas as pd
+
+dates = ['2017-01-05', 'Jan 5, 2017', '01/05/2017', '2017.01.05', '2017/01/05','20170105']
+# dates = ['2017-01-05','Jan 5, 2017']
+dates = pd.to_datetime(dates[0])
+dates
+
+s = pd.Series(['This asdf is datetime is 11-20-2020',
+         'This asdf is datetime is 1-25-2017'])
+
+dates = pd.to_datetime(s, format='This asdf is datetime is %m/%d/%Y')
